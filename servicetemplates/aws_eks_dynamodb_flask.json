@@ -1,10 +1,22 @@
 {
-  "steporder": [
+  "API Platform": "API Gateway",
+  "Auth": "AWS Cognito",
+  "Cloud": "AWS",
+  "DB": "DynamoDB",
+  "Deploy Platform": "EKS",
+  "Language": "Python",
+  "optionname": "deployeksservice",
+  "service_actions": [
+    "create",
+    "delete"
+  ],
+  "servicetype": "dynamodb_eks_flask",
+  "WEB Platform": "Flask",
+   "steporder": [
     "tables",
     "apigw"
   ],
   "servicetype": "dynamodb_eks_flask",
-  "optionname": "deployeksservice",
   "tables": {
     "tasks": [
       {
@@ -50,7 +62,7 @@
     "stepname": "Deploy DynamoDB Tables",
     "hint": "Setup Code repo and aws cli before Running this task",
     "title": "AWS Interface"
-  }
+  },
   "apigw": {
     "description": "Deploy apigw",
     "hint": "Setup Code repo and aws cli before Running this task",
