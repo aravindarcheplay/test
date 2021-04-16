@@ -1,0 +1,28 @@
+{
+  "code": "from flask import Flask, jsonify\nfrom flask import Blueprint\nfrom flask import request\nimport sys,os,boto3,requests\nimport logging,json\ndef dynamodb_put_item(Input):\n  dynamodb=boto3.resource('dynamodb',region_name='us-east-1')\n  table=dynamodb.Table('TABLENAME')\n  data=table.put_item(Item=Input)\n  return data\ndef archeplay(request):\n  data=dynamodb_put_item(request)\n  return data\nMETHODID = Blueprint('METHODID', __name__)\n@METHODID.route('METHODPATH', methods=['POST'])\ndef main():\n  Input = request.json[\"Item\"]\n  return archeplay(Input)\n",
+  "dbtype": "dynamodb",
+  "function_code": "def dynamodb_put_item(Input):\n  dynamodb=boto3.resource('dynamodb',region_name='us-east-1')\n  table=dynamodb.Table('TABLENAME')\n  data=table.put_item(Item=Input)\n  return data\n",
+  "import_code": "from flask import Flask, jsonify\nfrom flask import Blueprint\nfrom flask import request\nimport sys,os,boto3,requests\nimport logging,json\n",
+  "keys": "primary_sort",
+  "language": "python3.6",
+  "main_code": "def archeplay(request):\n  data=dynamodb_put_item(request)\n  return data\n",
+  "methodpath": "/TABLENAME",
+  "methodtype": "POST",
+  "name": "Dynamodb put Item",
+  "replacevariables": [
+    "PRIMARYKEY",
+    "TABLENAME",
+    "METHODID",
+    "METHODPATH",
+    "REGION"
+  ],
+  "requirements": [
+    "flask",
+    "gunicorn",
+    "boto3",
+    "requests"
+  ],
+  "templateid": "primarysortputimport",
+  "type_code": "METHODID = Blueprint('METHODID', __name__)\n@METHODID.route('METHODPATH', methods=['POST'])\ndef main():\n  Input = request.json[\"Item\"]\n  return archeplay(Input)\n",
+  "version": "1"
+}
