@@ -1,0 +1,28 @@
+{
+  "code": "from flask import Flask, jsonify\nfrom flask import Blueprint\nfrom flask import request\nimport sys,os,boto3,requests\nimport logging,json\nfrom boto3.dynamodb.conditions import Key, Attr\ndef dynamodb_query_item(Input):\n  try:\n    dynamodb=boto3.resource('dynamodb',region_name='us-east-1')\n    table=dynamodb.Table('TABLENAME')\n    data = table.query(KeyConditionExpression=Key(\"PRIMARYKEY\").eq(Input))[\"Items\"]\n    return data\n  except Exception as e:\n    return(str(e))\ndef archeplay(request):\n  data=dynamodb_query_item(request)\n  return data\nMETHODID = Blueprint('METHODID', __name__)\n@METHODID.route('METHODPATH', methods=['GET'])\ndef main(PRIMARYKEY):\n  return archeplay(PRIMARYKEY)\n",
+  "dbtype": "dynamodb",
+  "function_code": "def dynamodb_query_item(Input):\n  try:\n    dynamodb=boto3.resource('dynamodb',region_name='us-east-1')\n    table=dynamodb.Table('TABLENAME')\n    data = table.query(KeyConditionExpression=Key(\"PRIMARYKEY\").eq(Input))[\"Items\"]\n    return data\n  except Exception as e:\n    return(str(e))\n",
+  "import_code": "from flask import Flask, jsonify\nfrom flask import Blueprint\nfrom flask import request\nimport sys,os,boto3,requests\nimport logging,json\n",
+  "keys": "primary_sort",
+  "language": "python3.6",
+  "main_code": "def archeplay(request):\n  data=dynamodb_query_item(request)\n  return data\n",
+  "methodpath": "/TABLENAME/{PRIMARYKEY}",
+  "methodtype": "GET",
+  "name": "Dynamodb Query with primary key",
+  "replacevariables": [
+    "PRIMARYKEY",
+    "TABLENAME",
+    "METHODID",
+    "METHODPATH",
+    "REGION"
+  ],
+  "requirements": [
+    "flask",
+    "gunicorn",
+    "boto3",
+    "requests"
+  ],
+  "templateid": "primarysortqueryimport",
+  "type_code": "METHODID = Blueprint('METHODID', __name__)\n@METHODID.route('METHODPATH', methods=['GET'])\ndef main(PRIMARYKEY):\n  return archeplay(PRIMARYKEY)\n",
+  "version": "1"
+}

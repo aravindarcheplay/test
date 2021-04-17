@@ -1,0 +1,28 @@
+{
+  "code": "from flask import Flask, jsonify\nfrom flask import Blueprint\nfrom flask import request\nimport sys,os,boto3,requests\nimport logging,json\ndef dynamodb_get_item(Input):\n  dynamodb=boto3.resource('dynamodb',region_name='us-east-1')\n  table=dynamodb.Table('TABLENAME')\n  kwargs={\n    'Key':{'PRIMARYKEY':Input}\n  }\n  data=table.get_item(**kwargs)['Item']\n  return data\ndef archeplay(request):\n  data=dynamodb_get_item(request)\n  return data\nMETHODID = Blueprint('METHODID', __name__)\n@METHODID.route('METHODPATH', methods=['GET'])\ndef main(PRIMARYKEY):\n  return archeplay(PRIMARYKEY)\n",
+  "dbtype": "dynamodb",
+  "function_code": "def dynamodb_get_item(Input):\n  dynamodb=boto3.resource('dynamodb',region_name='us-east-1')\n  table=dynamodb.Table('TABLENAME')\n  kwargs={\n    'Key':{'PRIMARYKEY':Input}\n  }\n  data=table.get_item(**kwargs)['Item']\n  return data\n",
+  "import_code": "from flask import Flask, jsonify\nfrom flask import Blueprint\nfrom flask import request\nimport sys,os,boto3,requests\nimport logging,json\n",
+  "keys": "primary",
+  "language": "python3.6",
+  "main_code": "def archeplay(request):\n  data=dynamodb_get_item(request)\n  return data\n",
+  "methodpath": "/TABLENAME/{PRIMARYKEY}",
+  "methodtype": "GET",
+  "name": "Dynamodb get Item",
+  "replacevariables": [
+    "PRIMARYKEY",
+    "TABLENAME",
+    "METHODID",
+    "METHODPATH",
+    "REGION"
+  ],
+  "requirements": [
+    "boto3",
+    "requests",
+    "gunicorn",
+    "flask"
+  ],
+  "templateid": "primarygetimport",
+  "type_code": "METHODID = Blueprint('METHODID', __name__)\n@METHODID.route('METHODPATH', methods=['GET'])\ndef main(PRIMARYKEY):\n  return archeplay(PRIMARYKEY)\n",
+  "version": "1"
+}

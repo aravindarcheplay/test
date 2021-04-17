@@ -1,0 +1,29 @@
+{
+  "code": "from flask import Flask, jsonify\nfrom flask import Blueprint\nfrom flask import request\nimport sys,os,boto3,requests\nimport logging,json\ndef dynamodb_get_item(primarykeyvalue,sortkeyvalue):\n  dynamodb=boto3.resource('dynamodb',region_name='us-east-1')\n  table=dynamodb.Table('TABLENAME')\n  kwargs={\n    'Key':{'PRIMARYKEY':primarykeyvalue,'SORTKEY': sortkeyvalue}\n  }\n  data=table.get_item(**kwargs)['Item']\n  return data\ndef archeplay(primarykeyvalue,sortkeyvalue):\n  data=dynamodb_get_item(primarykeyvalue,sortkeyvalue)\n  return data\nMETHODID = Blueprint('METHODID', __name__)\n@METHODID.route('METHODPATH', methods=['GET'])\ndef main(PRIMARYKEY,SORTKEY):\n  return archeplay(PRIMARYKEY,SORTKEY)\n",
+  "dbtype": "dynamodb",
+  "function_code": "def dynamodb_get_item(primarykeyvalue,sortkeyvalue):\n  dynamodb=boto3.resource('dynamodb',region_name='us-east-1')\n  table=dynamodb.Table('TABLENAME')\n  kwargs={\n    'Key':{'PRIMARYKEY':primarykeyvalue,'SORTKEY': sortkeyvalue}\n  }\n  data=table.get_item(**kwargs)['Item']\n  return data\n",
+  "import_code": "from flask import Flask, jsonify\nfrom flask import Blueprint\nfrom flask import request\nimport sys,os,boto3,requests\nimport logging,json\n",
+  "keys": "primary_sort",
+  "language": "python3.6",
+  "main_code": "def archeplay(primarykeyvalue,sortkeyvalue):\n  data=dynamodb_get_item(primarykeyvalue,sortkeyvalue)\n  return data\n",
+  "methodpath": "/TABLENAME/{PRIMARYKEY}/{SORTKEY}",
+  "methodtype": "GET",
+  "name": "Dynamodb get Item",
+  "replacevariables": [
+    "PRIMARYKEY",
+    "SORTKEY",
+    "TABLENAME",
+    "METHODID",
+    "METHODPATH",
+    "REGION"
+  ],
+  "requirements": [
+    "flask",
+    "gunicorn",
+    "boto3",
+    "requests"
+  ],
+  "templateid": "primarysortgetimport",
+  "type_code": "METHODID = Blueprint('METHODID', __name__)\n@METHODID.route('METHODPATH', methods=['GET'])\ndef main(PRIMARYKEY,SORTKEY):\n  return archeplay(PRIMARYKEY,SORTKEY)\n",
+  "version": "1"
+}
