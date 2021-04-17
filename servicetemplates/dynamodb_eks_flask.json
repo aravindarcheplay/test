@@ -24,7 +24,7 @@
                     "Type": "bash"
                 },
                 "tasktype": "cloudformation",
-                "filepath": "aws_eks_dynamodb_flask/tables",
+                "filepath": "deploysteps/tables",
                 "Create": {
                     "args": [
                         "SERVICEID"
@@ -79,7 +79,7 @@
                     "Type": "bash"
                 },
                 "description": "This section deployes apigw using cloudformation",
-                "filepath": "aws_eks_dynamodb_flask/apigw",
+                "filepath": "deploysteps/apigw",
                 "Generator": {
                     "args": [
                         "FILEPATH",
