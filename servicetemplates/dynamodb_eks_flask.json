@@ -34,7 +34,7 @@
                 },
                 "taskno": 1.0,
                 "description": "This section deployes dynamodb tables using cloudformation",
-                "taskname": "deploy dynamodb",
+                "taskname": "dynamodb",
                 "Update": {
                     "args": [
                         "SERVICEID"
