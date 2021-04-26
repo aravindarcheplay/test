@@ -49,7 +49,7 @@
                     ],
                     "Filename": "generator.py",
                     "Type": "python",
-                    "Requirements": []
+                    "Requirements": ["boto3"]
                 }
             }],
             "description": "Deploy DynamoDB Tables",
@@ -86,9 +86,7 @@
                         "SERVICEID"
                     ],
                     "Filename": "generator.py",
-                    "Requirements": [
-
-                    ],
+                    "Requirements": ["boto3"],
                     "Type": "python"
                 },
                 "taskname": "apigw",
