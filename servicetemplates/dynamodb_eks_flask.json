@@ -47,7 +47,7 @@
                         "FILEPATH",
                         "SERVICEID"
                     ],
-                    "Filename": "generator.py",
+                    "Filename": "PATHPARAM/generator.py",
                     "Type": "python",
                     "Requirements": ["boto3"]
                 }
@@ -85,7 +85,7 @@
                         "FILEPATH",
                         "SERVICEID"
                     ],
-                    "Filename": "generator.py",
+                    "Filename": "PATHPARAM/generator.py",
                     "Requirements": ["boto3"],
                     "Type": "python"
                 },
