@@ -129,7 +129,7 @@ def createcf():
     apigwconf={
         "serviceid": serviceid,
         "servicename": api["apiname"],
-        "cognitouserpoolarn": apiinput["cognitouserpoolarn"]["value"]
+        "cognitouserpoolarn": apiinput["Cognitouserpoolarn"]["value"]
     }
     ModuleTemplate=create_input(apigwconf)
     modulepath=path+"/apigwcf.json"
