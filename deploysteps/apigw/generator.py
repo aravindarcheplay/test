@@ -128,7 +128,7 @@ def createcf():
         return(message)
     apigwconf={
         "serviceid": serviceid,
-        "servicename": api["servicename"],
+        "servicename": api["apiname"],
         "cognitouserpoolarn": apiinput["cognitouserpoolarn"]["value"]
     }
     ModuleTemplate=create_input(apigwconf)
