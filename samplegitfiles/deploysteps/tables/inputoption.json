@@ -1,7 +1,0 @@
-{
-    "Region": {
-        "Type": "String",
-        "Mandatory": true,
-        "Default": "us-east-1"
-    }
-}
